@@ -4,7 +4,7 @@ Adds animated counting support to `UILabel`.
 
 
 ## Setup ######
-Simply initialize a `UICountingLabel` the same way you set up a regular UILabel:
+Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel`:
 
     UICountingLabel* myLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 10, 100, 40)];
     [self.view addSubview:myLabel];
@@ -26,14 +26,14 @@ Note that you can also leave out the duration and the counting method.  The defa
 ## Modes #####
 There are currently four modes of counting.
 
-### UILabelCountingMethodLinear #####
+### `UILabelCountingMethodLinear` #####
 Counts linearly from the start to the end.  
 
-### UILabelCountingMethodEaseIn #####
-Ease On starts out slow and speeds up counting as it gets to the end, stopping suddenly at the final value.
+### `UILabelCountingMethodEaseIn` #####
+Ease In starts out slow and speeds up counting as it gets to the end, stopping suddenly at the final value.
 
-### UILabelCountingMethodEaseOut #####
+### `UILabelCountingMethodEaseOut` #####
 Ease Out starts out fast and slows down as it gets to the destination value.  
 
-### UILabelCountingMethodEaseInOut #####
+### `UILabelCountingMethodEaseInOut` #####
 Ease In/Out starts out slow, speeds up towards the middle, and then slows down as it approaches the destination.  It is a nice, smooth curve that looks great, and is the default method.
