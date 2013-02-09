@@ -1,5 +1,85 @@
 #import "UICountingLabel.h"
 
+
+#pragma mark - UILabelCounter
+
+@interface UILabelCounter : NSObject
+
+-(float)update:(float)t;
+
+@property float rate;
+
+@end
+
+@interface UILabelCounterLinear : UILabelCounter
+
+@end
+
+@interface UILabelCounterEaseIn : UILabelCounter
+
+@end
+
+@interface UILabelCounterEaseOut : UILabelCounter
+
+@end
+
+@interface UILabelCounterEaseInOut : UILabelCounter
+
+@end
+
+@implementation  UILabelCounter
+
+-(float)update:(float)t{
+    return 0;
+}
+
+@end
+
+@implementation UILabelCounterLinear
+
+-(float)update:(float)t
+{
+    return t;
+}
+
+@end
+
+@implementation UILabelCounterEaseIn
+
+-(float)update:(float)t
+{
+    return powf(t, self.rate);
+}
+
+@end
+
+@implementation UILabelCounterEaseOut
+
+-(float)update:(float)t{
+    return 1.0-powf((1.0-t), self.rate);
+}
+
+@end
+
+@implementation UILabelCounterEaseInOut
+
+-(float) update: (float) t
+{
+	int sign =1;
+	int r = (int) self.rate;
+	if (r % 2 == 0)
+		sign = -1;
+	t *= 2;
+	if (t < 1)
+		return 0.5f * powf (t, self.rate);
+	else
+		return sign*0.5f * (powf (t-2, self.rate) + sign*2);
+}
+
+@end
+
+#pragma mark - UICountingLabel
+
 @interface UICountingLabel ()
 
 @property int startingValue;
@@ -7,9 +87,10 @@
 @property NSTimeInterval progress;
 @property NSTimeInterval lastUpdate;
 @property NSTimeInterval totalTime;
+@property float easingRate;
 
+@property (nonatomic, retain) UILabelCounter* counter;
 
-@property UILabelCountingMethod countingMethod;
 @end
 
 @implementation UICountingLabel
@@ -26,12 +107,32 @@
 
 -(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration
 {
+    
+    self.easingRate = 3.0f;
     self.startingValue = [self.text intValue];
     self.destinationValue = value;
     self.progress = 0;
     self.totalTime = duration;
     self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
-    self.countingMethod = countingMethod;
+
+    switch(countingMethod)
+    {
+        case UILabelCountingMethodLinear:
+            self.counter = [[[UILabelCounterLinear alloc] init] autorelease];
+            break;
+        case UILabelCountingMethodEaseIn:
+            self.counter = [[[UILabelCounterEaseIn alloc] init] autorelease];
+            break;
+        case UILabelCountingMethodEaseOut:
+            self.counter = [[[UILabelCounterEaseOut alloc] init] autorelease];
+            break;
+        case UILabelCountingMethodEaseInOut:
+            self.counter = [[[UILabelCounterEaseInOut alloc] init] autorelease];
+            break;
+    }
+    
+    self.counter.rate = 3.0f;
+    
     NSTimer* timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 }
@@ -50,16 +151,11 @@
     }
     
     float percent = self.progress / self.totalTime;
-    int value = 0;
-    switch (self.countingMethod)
-    {
-        case UILabelCountingMethodLinear:
-            value = self.startingValue + (int)((float)(self.destinationValue - self.startingValue) * percent);
-            break;
-        default:
-            value = 0;
-            break;
-    }
+    float updateVal =[self.counter update:percent];
+    int value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
+    
+    NSLog(@"Percent is %f,\t updateVal = %f\t value = %d",percent,updateVal,value);
+    
     
     self.text = [NSString stringWithFormat:@"%d",value];
     
