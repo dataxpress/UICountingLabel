@@ -27,11 +27,20 @@
     [myLabel setValue:100 withCountingMethod:UILabelCountingMethodLinear andDuration:2.0];
     [myLabel release];
     
+    // make one that counts up, using ease in out
+    UICountingLabel* countingUpEaseInOutLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 50, 100, 40)];
+    [self.view addSubview:countingUpEaseInOutLabel];
+    countingUpEaseInOutLabel.text = @"100";
+    [countingUpEaseInOutLabel setValue:200 withCountingMethod:UILabelCountingMethodEaseInOut andDuration:2.0];
+    [countingUpEaseInOutLabel release];
+    
+    
+    
     // make one that counts down
-    UICountingLabel* countingDownLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 50, 100, 40)];
+    UICountingLabel* countingDownLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 90, 100, 40)];
     [self.view addSubview:countingDownLabel];
     countingDownLabel.text = @"200";
-    [countingDownLabel setValue:100 withCountingMethod:UILabelCountingMethodLinear andDuration:2.0];
+    [countingDownLabel setValue:100 withCountingMethod:UILabelCountingMethodEaseOut andDuration:2.0];
     [countingDownLabel release];
     
 }
