@@ -3,6 +3,8 @@
 
 #pragma mark - UILabelCounter
 
+// This whole class & subclasses are private to UICountingLabel, which is why they are declared here in the .m file
+
 @interface UILabelCounter : NSObject
 
 -(float)update:(float)t;
@@ -163,6 +165,7 @@
 
 -(void)dealloc
 {
+    [_counter release];
     [super dealloc];
 }
 
