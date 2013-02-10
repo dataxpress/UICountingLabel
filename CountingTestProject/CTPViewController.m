@@ -8,7 +8,6 @@
 
 #import "CTPViewController.h"
 
-#import "UICountingLabel.h"
 
 @interface CTPViewController ()
 
@@ -43,6 +42,12 @@
     [countingDownLabel setValue:100 withCountingMethod:UILabelCountingMethodEaseOut andDuration:2.0];
     [countingDownLabel release];
     
+    
+    
+    // example using a NIB-placed label and skipping arguments (defaults: method: easeinout, time: 2.0)
+    [self.label setValue:1000];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,4 +56,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [_label release];
+    [super dealloc];
+}
 @end
