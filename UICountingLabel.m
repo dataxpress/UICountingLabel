@@ -99,12 +99,12 @@
 
 -(void)setValue:(int)value
 {
-    [self setValue:value withCountingMethod:UILabelCountingMethodLinear andDuration:1.0f];
+    [self setValue:value withCountingMethod:UILabelCountingMethodEaseInOut andDuration:2.0f];
 }
 
 -(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod
 {
-    [self setValue:value withCountingMethod:countingMethod andDuration:1.0f];
+    [self setValue:value withCountingMethod:countingMethod andDuration:2.0f];
 }
 
 -(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration
