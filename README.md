@@ -19,9 +19,19 @@ When you want the label to start counting, set the value of the label to the ini
 
 Then, call
 
-    [myLabel setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration];
+    [myLabel setValue:100];
 
-Note that you can also leave out the duration and the counting method.  The defaults are UILabelCountingMethodEaseInOut for the mode and 2.0 seconds for the duration.
+You can also specify the counting method and the duration.  The defaults are `UILabelCountingMethodEaseInOut` for the mode and 2.0 seconds for the duration.
+
+    [myLabel setValue:500 withCountingMethod:UILabelCountingMethodLinear];
+    [myLabel setValue:350 withCountingMethod:UILabelCountingMethodEaseIn andDuration:4.0];
+    
+The full signature is:
+    
+    [myLabel     setValue:(int)value 
+       withCountingMethod:(UILabelCountingMethod)countingMethod 
+              andDuration:(NSTimeInterval)duration];
+
 
 ## Modes #####
 There are currently four modes of counting.
