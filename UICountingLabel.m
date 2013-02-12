@@ -156,9 +156,6 @@
     float updateVal =[self.counter update:percent];
     int value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
     
-    NSLog(@"Percent is %f,\t updateVal = %f\t value = %d",percent,updateVal,value);
-    
-    
     self.text = [NSString stringWithFormat:@"%d",value];
     
 }
