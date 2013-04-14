@@ -17,6 +17,10 @@ You can also add it to your XIB file, just make sure you set the class type to `
 Set the format of your label.  This will be filled with a single int or float (depending on how you format it) when it updates:
 
     myLabel.format = @"%d";
+    
+Optionally, set the mode.  The default is `UILabelCountingMethodEaseInOut`, which will start slow, speed up, and then slow down as it reaches the end.  Other options are described below in the Methods section.
+
+    myLabel.method = UILabelCountingMethodLinear;
 
 When you want the label to start counting, just call:
 
