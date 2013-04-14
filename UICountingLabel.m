@@ -84,8 +84,8 @@
 
 @interface UICountingLabel ()
 
-@property int startingValue;
-@property int destinationValue;
+@property float startingValue;
+@property float destinationValue;
 @property NSTimeInterval progress;
 @property NSTimeInterval lastUpdate;
 @property NSTimeInterval totalTime;
@@ -97,17 +97,17 @@
 
 @implementation UICountingLabel
 
--(void)setValue:(int)value
+-(void)setValue:(float)value
 {
     [self setValue:value withCountingMethod:UILabelCountingMethodEaseInOut andDuration:2.0f];
 }
 
--(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod
+-(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod
 {
     [self setValue:value withCountingMethod:countingMethod andDuration:2.0f];
 }
 
--(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration
+-(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration
 {
     
     self.easingRate = 3.0f;
@@ -154,15 +154,18 @@
     
     float percent = self.progress / self.totalTime;
     float updateVal =[self.counter update:percent];
-    int value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
+    float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
     
-    self.text = [NSString stringWithFormat:@"%d",value];
+    
+    
+    self.text = [NSString stringWithFormat:_format,value];
     
 }
 
 -(void)dealloc
 {
     [_counter release];
+    [_format release];
     [super dealloc];
 }
 
