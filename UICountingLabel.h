@@ -10,9 +10,11 @@ typedef enum {
 
 @interface UICountingLabel : UILabel
 
--(void)setValue:(int)value;
--(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod;
--(void)setValue:(int)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration;
+@property (nonatomic, strong) NSString *format;
+
+-(void)setValue:(float)value;
+-(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod;
+-(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration;
 
 @end
 
