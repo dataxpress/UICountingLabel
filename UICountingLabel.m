@@ -97,27 +97,25 @@
 
 @implementation UICountingLabel
 
--(void)setValue:(float)value
+-(void)countFrom:(float)value to:(float)endValue
 {
-    [self setValue:value withCountingMethod:UILabelCountingMethodEaseInOut andDuration:2.0f];
+    [self countFrom:value to:endValue withDuration:2.0f];
 }
 
--(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod
-{
-    [self setValue:value withCountingMethod:countingMethod andDuration:2.0f];
-}
-
--(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration
+-(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration
 {
     
     self.easingRate = 3.0f;
-    self.startingValue = [self.text intValue];
-    self.destinationValue = value;
+    self.startingValue = startValue;
+    self.destinationValue = endValue;
     self.progress = 0;
     self.totalTime = duration;
     self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
+    
+    if(self.format == nil)
+        self.format = @"%f";
 
-    switch(countingMethod)
+    switch(self.method)
     {
         case UILabelCountingMethodLinear:
             self.counter = [[[UILabelCounterLinear alloc] init] autorelease];
@@ -157,9 +155,15 @@
     float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
     
     
-    
-    self.text = [NSString stringWithFormat:_format,value];
-    
+    // check if counting with ints - cast to int
+    if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+    {
+        self.text = [NSString stringWithFormat:self.format,(int)value];
+    }
+    else
+    {
+        self.text = [NSString stringWithFormat:self.format,value];
+    }
 }
 
 -(void)dealloc

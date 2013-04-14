@@ -2,19 +2,19 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    UILabelCountingMethodLinear,
+    UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
     UILabelCountingMethodEaseOut,
-    UILabelCountingMethodEaseInOut
+    UILabelCountingMethodLinear
 } UILabelCountingMethod;
 
 @interface UICountingLabel : UILabel
 
 @property (nonatomic, strong) NSString *format;
+@property (nonatomic, assign) UILabelCountingMethod method;
 
--(void)setValue:(float)value;
--(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod;
--(void)setValue:(float)value withCountingMethod:(UILabelCountingMethod)countingMethod andDuration:(NSTimeInterval)duration;
+-(void)countFrom:(float)startValue to:(float)endValue;
+-(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration;
 
 @end
 
