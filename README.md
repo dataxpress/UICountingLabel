@@ -13,25 +13,32 @@ Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel
 You can also add it to your XIB file, just make sure you set the class type to `UICountingLabel` instead of `UILabel` and be sure to `#import "UICountingLabel.h"` in the header file.
 
 ## Use #####
-When you want the label to start counting, set the value of the label to the initial value first:
 
-    myLabel.text = @"0";
+Set the format of your label.  This will be filled with a single int or float (depending on how you format it) when it updates:
 
-Then, call
+    myLabel.format = @"%d";
 
-    [myLabel setValue:100];
+When you want the label to start counting, just call:
 
-You can also specify the counting method and the duration.  The defaults are `UILabelCountingMethodEaseInOut` for the mode and 2.0 seconds for the duration.
+    [myLabel countFrom:0 to:100];
 
-    [myLabel setValue:500 withCountingMethod:UILabelCountingMethodLinear];
-    [myLabel setValue:350 withCountingMethod:UILabelCountingMethodEaseIn andDuration:4.0];
+You can also specify the duration.  The default is 2.0 seconds.
+
+    [myLabel countFrom:0 to:100 withDuration:5.0f];
     
 The full signature is:
     
-    [myLabel     setValue:(int)value 
-       withCountingMethod:(UILabelCountingMethod)countingMethod 
-              andDuration:(NSTimeInterval)duration];
+    [myLabel     countFrom:(float)startValue 
+                        to:(float)endValue 
+              withDuration:(NSTimeInterval)duration];
 
+## Formats #####
+
+When you set the `format` property, the label will look for the presence of `%(.*)d` or `%(.*)i`, and if found, will cast the value to `int` before formatting the string.  Otherwise, it will format it using a `float`.  
+
+If you're using a `float` value, it's recommended to limit the number of digits with a format string such as `@"%.1f"` (for one decimal place)
+
+Because it uses the standard `stringWithFormat:` method, you can also include arbitrary text in your format, such as `@"Points: %i"`.
 
 ## Modes #####
 There are currently four modes of counting.
