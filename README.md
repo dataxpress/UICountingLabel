@@ -40,7 +40,7 @@ The full signature is:
 
 When you set the `format` property, the label will look for the presence of `%(.*)d` or `%(.*)i`, and if found, will cast the value to `int` before formatting the string.  Otherwise, it will format it using a `float`.  
 
-If you're using a `float` value, it's recommended to limit the number of digits with a format string such as `@"%.1f"` (for one decimal place)
+If you're using a `float` value, it's recommended to limit the number of digits with a format string, such as `@"%.1f"` for one decimal place.
 
 Because it uses the standard `stringWithFormat:` method, you can also include arbitrary text in your format, such as `@"Points: %i"`.
 
