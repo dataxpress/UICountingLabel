@@ -155,19 +155,27 @@
     float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
     
     
-    // check if counting with ints - cast to int
-    if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+    if(self.formatBlock != nil)
     {
-        self.text = [NSString stringWithFormat:self.format,(int)value];
+        self.text = self.formatBlock(value);
     }
     else
     {
-        self.text = [NSString stringWithFormat:self.format,value];
+        // check if counting with ints - cast to int
+        if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+        {
+            self.text = [NSString stringWithFormat:self.format,(int)value];
+        }
+        else
+        {
+            self.text = [NSString stringWithFormat:self.format,value];
+        }
     }
 }
 
 -(void)dealloc
 {
+    [_formatBlock release];
     [_counter release];
     [_format release];
     [super dealloc];
