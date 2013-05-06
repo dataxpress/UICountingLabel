@@ -37,12 +37,18 @@
     
     
     
-    // count up using a string in the formatter with apdded zeroes
+    // count up using a string that uses a number formatter
     UICountingLabel* scoreLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 90, 200, 40)];
     [self.view addSubview:scoreLabel];
-    scoreLabel.format = @"Score: %05d";
+    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
+    formatter.numberStyle = kCFNumberFormatterDecimalStyle;
+    scoreLabel.formatBlock = ^NSString* (float value)
+    {
+        NSString* formatted = [formatter stringFromNumber:@((int)value)];
+        return [NSString stringWithFormat:@"Score: %@",formatted];
+    };
     scoreLabel.method = UILabelCountingMethodEaseOut;
-    [scoreLabel countFrom:0 to:100 withDuration:2.5];
+    [scoreLabel countFrom:0 to:10000 withDuration:2.5];
     [scoreLabel release];
     
     
