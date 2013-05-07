@@ -144,7 +144,7 @@
     self.progress += now - self.lastUpdate;
     self.lastUpdate = now;
     
-    if(self.progress > self.totalTime)
+    if(self.progress >= self.totalTime)
     {
         [timer invalidate];
         self.progress = self.totalTime;
