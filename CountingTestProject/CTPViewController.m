@@ -53,8 +53,13 @@
     
     
     
-    // example using a NIB-placed label and skipping arguments (defaults: method: easeinout, time: 2.0)
-    [self.label countFrom:0 to:1000];
+    self.label.method = UILabelCountingMethodEaseInOut;
+    self.label.format = @"%d%%";
+    self.label.completionBlock = ^{
+        self.label.textColor = [UIColor colorWithRed:0 green:0.5 blue:0 alpha:1];
+    };
+    [self.label countFrom:0 to:100];
+    
     
     
 }
