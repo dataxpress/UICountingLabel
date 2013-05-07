@@ -148,6 +148,11 @@
     {
         [timer invalidate];
         self.progress = self.totalTime;
+        if(self.completionBlock != nil)
+        {
+            self.completionBlock();
+            self.completionBlock = nil;
+        }
     }
     
     float percent = self.progress / self.totalTime;
@@ -175,6 +180,7 @@
 
 -(void)dealloc
 {
+    [_completionBlock release];
     [_formatBlock release];
     [_counter release];
     [_format release];

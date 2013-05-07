@@ -17,7 +17,7 @@ typedef NSString* (^UICountingLabelFormatBlock)(float value);
 @property (nonatomic, assign) UILabelCountingMethod method;
 
 @property (nonatomic, copy) UICountingLabelFormatBlock formatBlock;
-
+@property (nonatomic, copy) void (^completionBlock)();
 
 
 -(void)countFrom:(float)startValue to:(float)endValue;
