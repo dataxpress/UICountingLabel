@@ -148,11 +148,6 @@
     {
         [timer invalidate];
         self.progress = self.totalTime;
-        if(self.completionBlock != nil)
-        {
-            self.completionBlock();
-            self.completionBlock = nil;
-        }
     }
     
     float percent = self.progress / self.totalTime;
@@ -176,6 +171,12 @@
             self.text = [NSString stringWithFormat:self.format,value];
         }
     }
+
+	if(self.progress == self.totalTime && self.completionBlock != nil)
+	{
+		self.completionBlock();
+		self.completionBlock = nil;
+	}
 }
 
 @end
