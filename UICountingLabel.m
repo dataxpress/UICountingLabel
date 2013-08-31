@@ -118,16 +118,16 @@
     switch(self.method)
     {
         case UILabelCountingMethodLinear:
-            self.counter = [[[UILabelCounterLinear alloc] init] autorelease];
+            self.counter = [[UILabelCounterLinear alloc] init];
             break;
         case UILabelCountingMethodEaseIn:
-            self.counter = [[[UILabelCounterEaseIn alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseIn alloc] init];
             break;
         case UILabelCountingMethodEaseOut:
-            self.counter = [[[UILabelCounterEaseOut alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseOut alloc] init];
             break;
         case UILabelCountingMethodEaseInOut:
-            self.counter = [[[UILabelCounterEaseInOut alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseInOut alloc] init];
             break;
     }
     
@@ -176,15 +176,6 @@
             self.text = [NSString stringWithFormat:self.format,value];
         }
     }
-}
-
--(void)dealloc
-{
-    [_completionBlock release];
-    [_formatBlock release];
-    [_counter release];
-    [_format release];
-    [super dealloc];
 }
 
 @end
