@@ -118,16 +118,16 @@
     switch(self.method)
     {
         case UILabelCountingMethodLinear:
-            self.counter = [[[UILabelCounterLinear alloc] init] autorelease];
+            self.counter = [[UILabelCounterLinear alloc] init];
             break;
         case UILabelCountingMethodEaseIn:
-            self.counter = [[[UILabelCounterEaseIn alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseIn alloc] init];
             break;
         case UILabelCountingMethodEaseOut:
-            self.counter = [[[UILabelCounterEaseOut alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseOut alloc] init];
             break;
         case UILabelCountingMethodEaseInOut:
-            self.counter = [[[UILabelCounterEaseInOut alloc] init] autorelease];
+            self.counter = [[UILabelCounterEaseInOut alloc] init];
             break;
     }
     
@@ -148,11 +148,6 @@
     {
         [timer invalidate];
         self.progress = self.totalTime;
-        if(self.completionBlock != nil)
-        {
-            self.completionBlock();
-            self.completionBlock = nil;
-        }
     }
     
     float percent = self.progress / self.totalTime;
@@ -176,15 +171,12 @@
             self.text = [NSString stringWithFormat:self.format,value];
         }
     }
-}
 
--(void)dealloc
-{
-    [_completionBlock release];
-    [_formatBlock release];
-    [_counter release];
-    [_format release];
-    [super dealloc];
+	if(self.progress == self.totalTime && self.completionBlock != nil)
+	{
+		self.completionBlock();
+		self.completionBlock = nil;
+	}
 }
 
 @end
