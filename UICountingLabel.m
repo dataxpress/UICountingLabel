@@ -94,7 +94,7 @@
 @property NSTimeInterval totalTime;
 @property float easingRate;
 
-@property (nonatomic, retain) UILabelCounter* counter;
+@property (nonatomic, strong) UILabelCounter* counter;
 
 @end
 

@@ -26,21 +26,19 @@
     myLabel.format = @"%d";
     [self.view addSubview:myLabel];
     [myLabel countFrom:1 to:10 withDuration:3.0];
-    [myLabel release];
     
     // make one that counts up from 5% to 10%, using ease in out (the default)
     UICountingLabel* countPercentageLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 50, 200, 40)];
     [self.view addSubview:countPercentageLabel];
     countPercentageLabel.format = @"%.1f%%";
     [countPercentageLabel countFrom:5 to:10];
-    [countPercentageLabel release];
     
     
     
     // count up using a string that uses a number formatter
     UICountingLabel* scoreLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 90, 200, 40)];
     [self.view addSubview:scoreLabel];
-    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = kCFNumberFormatterDecimalStyle;
     scoreLabel.formatBlock = ^NSString* (float value)
     {
@@ -49,14 +47,14 @@
     };
     scoreLabel.method = UILabelCountingMethodEaseOut;
     [scoreLabel countFrom:0 to:10000 withDuration:2.5];
-    [scoreLabel release];
     
     
     
     self.label.method = UILabelCountingMethodEaseInOut;
     self.label.format = @"%d%%";
+    __weak CTPViewController* blockSelf = self;
     self.label.completionBlock = ^{
-        self.label.textColor = [UIColor colorWithRed:0 green:0.5 blue:0 alpha:1];
+        blockSelf.label.textColor = [UIColor colorWithRed:0 green:0.5 blue:0 alpha:1];
     };
     [self.label countFrom:0 to:100];
     
@@ -70,8 +68,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [_label release];
-    [super dealloc];
-}
 @end

@@ -11,6 +11,6 @@
 #import "UICountingLabel.h"
 
 @interface CTPViewController : UIViewController
-@property (retain, nonatomic) IBOutlet UICountingLabel *label;
+@property (strong, nonatomic) IBOutlet UICountingLabel *label;
 
 @end
