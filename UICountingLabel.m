@@ -1,5 +1,8 @@
 #import "UICountingLabel.h"
 
+#if !__has_feature(objc_arc)
+#error UICountingLabel is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
+#endif
 
 #pragma mark - UILabelCounter
 
@@ -91,7 +94,7 @@
 @property NSTimeInterval totalTime;
 @property float easingRate;
 
-@property (nonatomic, retain) UILabelCounter* counter;
+@property (nonatomic, strong) UILabelCounter* counter;
 
 @end
 
