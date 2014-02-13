@@ -176,7 +176,14 @@
 {
     if(self.formatBlock != nil)
     {
-        self.text = self.formatBlock(value);
+        id text = self.formatBlock(value);
+        if ([text isKindOfClass:[NSString class]] || text == nil) {
+            self.text = (NSString*) text;
+        } else if ([text isKindOfClass:[NSAttributedString class]]) {
+            self.attributedText = (NSAttributedString*) text;
+        } else {
+            NSAssert(YES, @"Format block must return NSString, NSAttributedString or nil value!");
+        }
     }
     else
     {

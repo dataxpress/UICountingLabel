@@ -8,7 +8,7 @@ typedef enum {
     UILabelCountingMethodLinear
 } UILabelCountingMethod;
 
-typedef NSString* (^UICountingLabelFormatBlock)(float value);
+typedef id (^UICountingLabelFormatBlock)(float value);
 
 
 @interface UICountingLabel : UILabel
