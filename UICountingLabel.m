@@ -174,7 +174,10 @@
 
 - (void)setTextValue:(float)value
 {
-    if(self.formatBlock != nil)
+    if (self.attributedFormatBlock != nil) {
+        self.attributedText = self.attributedFormatBlock(value);
+    }
+    else if(self.formatBlock != nil)
     {
         self.text = self.formatBlock(value);
     }

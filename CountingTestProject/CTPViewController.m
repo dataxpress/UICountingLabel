@@ -48,7 +48,27 @@
     scoreLabel.method = UILabelCountingMethodEaseOut;
     [scoreLabel countFrom:0 to:10000 withDuration:2.5];
     
-    
+    // count up with attributed string
+    NSInteger toValue = 100;
+    UICountingLabel* attributedLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 130, 200, 40)];
+    [self.view addSubview:attributedLabel];
+    attributedLabel.attributedFormatBlock = ^NSAttributedString* (float value)
+    {
+        NSDictionary* normal = @{ NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 20] };
+        NSDictionary* highlight = @{ NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue" size: 20] };
+        
+        NSString* prefix = [NSString stringWithFormat:@"%d", (int)value];
+        NSString* postfix = [NSString stringWithFormat:@"/%d", (int)toValue];
+        
+        NSMutableAttributedString* prefixAttr = [[NSMutableAttributedString alloc] initWithString: prefix
+                                                                                       attributes: highlight];
+        NSAttributedString* postfixAttr = [[NSAttributedString alloc] initWithString: postfix
+                                                                          attributes: normal];
+        [prefixAttr appendAttributedString: postfixAttr];
+        
+        return prefixAttr;
+    };
+    [attributedLabel countFrom:0 to:toValue withDuration:2.5];
     
     self.label.method = UILabelCountingMethodEaseInOut;
     self.label.format = @"%d%%";
