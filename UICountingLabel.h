@@ -8,8 +8,8 @@ typedef enum {
     UILabelCountingMethodLinear
 } UILabelCountingMethod;
 
-typedef id (^UICountingLabelFormatBlock)(float value);
-
+typedef NSString* (^UICountingLabelFormatBlock)(float value);
+typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(float value);
 
 @interface UICountingLabel : UILabel
 
@@ -17,6 +17,7 @@ typedef id (^UICountingLabelFormatBlock)(float value);
 @property (nonatomic, assign) UILabelCountingMethod method;
 
 @property (nonatomic, copy) UICountingLabelFormatBlock formatBlock;
+@property (nonatomic, copy) UICountingLabelAttributedFormatBlock attributedFormatBlock;
 @property (nonatomic, copy) void (^completionBlock)();
 
 

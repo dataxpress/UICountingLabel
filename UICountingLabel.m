@@ -174,16 +174,12 @@
 
 - (void)setTextValue:(float)value
 {
-    if(self.formatBlock != nil)
+    if (self.attributedFormatBlock != nil) {
+        self.attributedText = self.attributedFormatBlock(value);
+    }
+    else if(self.formatBlock != nil)
     {
-        id text = self.formatBlock(value);
-        if ([text isKindOfClass:[NSString class]] || text == nil) {
-            self.text = (NSString*) text;
-        } else if ([text isKindOfClass:[NSAttributedString class]]) {
-            self.attributedText = (NSAttributedString*) text;
-        } else {
-            NSAssert(YES, @"Format block must return NSString, NSAttributedString or nil value!");
-        }
+        self.text = self.formatBlock(value);
     }
     else
     {
