@@ -6,7 +6,7 @@ Adds animated counting support to `UILabel`.
 UICountingLabel is available on CocoaPods.
 Add this to your Podfile:
 
-`pod 'UICountingLabel'
+pod 'UICountingLabel'
 
 And then run:
 
