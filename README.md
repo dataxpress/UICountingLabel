@@ -2,6 +2,15 @@
 
 Adds animated counting support to `UILabel`. 
 
+## CocoaPods ######
+UICountingLabel is available on CocoaPods.
+Add this to your Podfile:
+
+`pod 'UICountingLabel'`
+
+And then run:
+
+`$ pod install`
 
 ## Setup ######
 Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel`:
