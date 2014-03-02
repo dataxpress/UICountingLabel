@@ -113,14 +113,14 @@
         [self runCompletionBlock];
         return;
     }
-    
+
     self.easingRate = 3.0f;
     self.startingValue = startValue;
     self.destinationValue = endValue;
     self.progress = 0;
     self.totalTime = duration;
     self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
-    
+
     if(self.format == nil)
         self.format = @"%f";
 
@@ -139,11 +139,12 @@
             self.counter = [[UILabelCounterEaseInOut alloc] init];
             break;
     }
-    
+
     self.counter.rate = 3.0f;
-    
+
     NSTimer* timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
 }
 
 -(void)updateValue:(NSTimer*)timer
@@ -152,20 +153,20 @@
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
     self.progress += now - self.lastUpdate;
     self.lastUpdate = now;
-    
+
     if(self.progress >= self.totalTime)
     {
         [timer invalidate];
         self.progress = self.totalTime;
     }
-    
+
     float percent = self.progress / self.totalTime;
     float updateVal =[self.counter update:percent];
     float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
-    
-    
+
+
     [self setTextValue:value];
-    
+
     if(self.progress == self.totalTime)
     {
         [self runCompletionBlock];
