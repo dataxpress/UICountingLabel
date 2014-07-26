@@ -15,14 +15,22 @@ typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(float value)
 
 @property (nonatomic, strong) NSString *format;
 @property (nonatomic, assign) UILabelCountingMethod method;
+@property (nonatomic, assign) CGFloat animationDuration;
 
 @property (nonatomic, copy) UICountingLabelFormatBlock formatBlock;
 @property (nonatomic, copy) UICountingLabelAttributedFormatBlock attributedFormatBlock;
 @property (nonatomic, copy) void (^completionBlock)();
 
-
 -(void)countFrom:(float)startValue to:(float)endValue;
 -(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration;
+
+-(void)countFromCurrentValueTo:(float)endValue;
+-(void)countFromCurrentValueTo:(float)endValue withDuration:(NSTimeInterval)duration;
+
+-(void)countFromZeroTo:(float)endValue;
+-(void)countFromZeroTo:(float)endValue withDuration:(NSTimeInterval)duration;
+
+- (CGFloat)currentValue;
 
 @end
 
