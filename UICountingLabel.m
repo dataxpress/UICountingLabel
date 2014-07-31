@@ -95,7 +95,7 @@
 @property float easingRate;
 
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) UILabelCounter* counter;
+@property (nonatomic, strong) UILabelCounter *counter;
 
 @end
 
@@ -152,7 +152,7 @@
 
     self.counter.rate = 3.0f;
 
-    self.timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue) userInfo:nil repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:UITrackingRunLoopMode];
 }
@@ -173,7 +173,7 @@
     [self countFrom:0.0f to:endValue withDuration:duration];
 }
 
--(void)updateValue {
+- (void)updateValue:(NSTimer *)timer {
     
     // update progress
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
@@ -214,6 +214,12 @@
             self.text = [NSString stringWithFormat:self.format,value];
         }
     }
+}
+
+- (void)setFormat:(NSString *)format {
+    _format = format;
+    // update label with new format
+    [self setTextValue:self.currentValue];
 }
 
 - (void)runCompletionBlock {
