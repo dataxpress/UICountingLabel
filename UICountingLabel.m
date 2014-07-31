@@ -94,7 +94,7 @@
 @property NSTimeInterval totalTime;
 @property float easingRate;
 
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, strong) UILabelCounter *counter;
 
 @end
@@ -152,9 +152,10 @@
 
     self.counter.rate = 3.0f;
 
-    self.timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:UITrackingRunLoopMode];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+    self.timer = timer;
 }
 
 - (void)countFromCurrentValueTo:(float)endValue {
