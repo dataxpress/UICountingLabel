@@ -33,17 +33,30 @@ Optionally, set the mode.  The default is `UILabelCountingMethodEaseInOut`, whic
 
 When you want the label to start counting, just call:
 
-    [myLabel countFrom:0 to:100];
+    [myLabel countFrom:50 to:100];
 
 You can also specify the duration.  The default is 2.0 seconds.
 
-    [myLabel countFrom:0 to:100 withDuration:5.0f];
+    [myLabel countFrom:50 to:100 withDuration:5.0f];
+
+Additionally, there is `animationDuration` property which you can use to override the default animation duration.
+
+    myLabel.animationDuration = 1.0;
+
+You can use common convinient methods for counting, such as:
+
+    [myLabel countFromCurrentValueTo:100];
+    [myLabel countFromZeroTo:100];
     
-The full signature is:
+Behind the scenes, these convinient methods use one base method, which has the following full signature:
     
     [myLabel     countFrom:(float)startValue 
                         to:(float)endValue 
               withDuration:(NSTimeInterval)duration];
+
+You can get current value of your label using `-currentValue` method (works correctly in the process of animation too):
+
+    CGFloat currentValue = [myLabel currentValue];
 
 ## Formats #####
 
