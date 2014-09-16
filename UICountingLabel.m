@@ -94,20 +94,32 @@
 @property NSTimeInterval totalTime;
 @property float easingRate;
 
-@property (nonatomic, strong) UILabelCounter* counter;
+@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, strong) UILabelCounter *counter;
 
 @end
 
 @implementation UICountingLabel
 
--(void)countFrom:(float)value to:(float)endValue
-{
-    [self countFrom:value to:endValue withDuration:2.0f];
+-(void)countFrom:(float)value to:(float)endValue {
+    
+    if (self.animationDuration == 0.0f) {
+        self.animationDuration = 2.0f;
+    }
+    
+    [self countFrom:value to:endValue withDuration:self.animationDuration];
 }
 
--(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration
-{
-    if(duration == 0.0){
+-(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration {
+    
+    self.startingValue = startValue;
+    self.destinationValue = endValue;
+    
+    // remove any (possible) old timers
+    [self.timer invalidate];
+    self.timer = nil;
+    
+    if (duration == 0.0) {
         // No animation
         [self setTextValue:endValue];
         [self runCompletionBlock];
@@ -115,8 +127,6 @@
     }
 
     self.easingRate = 3.0f;
-    self.startingValue = startValue;
-    self.destinationValue = endValue;
     self.progress = 0;
     self.totalTime = duration;
     self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
@@ -142,33 +152,44 @@
 
     self.counter.rate = 3.0f;
 
-    NSTimer* timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+    self.timer = timer;
 }
 
--(void)updateValue:(NSTimer*)timer
-{
+- (void)countFromCurrentValueTo:(float)endValue {
+    [self countFrom:[self currentValue] to:endValue];
+}
+
+- (void)countFromCurrentValueTo:(float)endValue withDuration:(NSTimeInterval)duration {
+    [self countFrom:[self currentValue] to:endValue withDuration:duration];
+}
+
+- (void)countFromZeroTo:(float)endValue {
+    [self countFrom:0.0f to:endValue];
+}
+
+- (void)countFromZeroTo:(float)endValue withDuration:(NSTimeInterval)duration {
+    [self countFrom:0.0f to:endValue withDuration:duration];
+}
+
+- (void)updateValue:(NSTimer *)timer {
+    
     // update progress
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
     self.progress += now - self.lastUpdate;
     self.lastUpdate = now;
-
-    if(self.progress >= self.totalTime)
-    {
-        [timer invalidate];
+    
+    if (self.progress >= self.totalTime) {
+        [self.timer invalidate];
+        self.timer = nil;
         self.progress = self.totalTime;
     }
-
-    float percent = self.progress / self.totalTime;
-    float updateVal =[self.counter update:percent];
-    float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
-
-
-    [self setTextValue:value];
-
-    if(self.progress == self.totalTime)
-    {
+    
+    [self setTextValue:[self currentValue]];
+    
+    if (self.progress == self.totalTime) {
         [self runCompletionBlock];
     }
 }
@@ -196,13 +217,29 @@
     }
 }
 
-- (void)runCompletionBlock
-{
-    if(self.completionBlock != nil)
-    {
-	self.completionBlock();
-	self.completionBlock = nil;
+- (void)setFormat:(NSString *)format {
+    _format = format;
+    // update label with new format
+    [self setTextValue:self.currentValue];
+}
+
+- (void)runCompletionBlock {
+    
+    if (self.completionBlock) {
+        self.completionBlock();
+        self.completionBlock = nil;
     }
+}
+
+- (CGFloat)currentValue {
+    
+    if (self.progress >= self.totalTime) {
+        return self.destinationValue;
+    }
+    
+    CGFloat percent = self.progress / self.totalTime;
+    CGFloat updateVal = [self.counter update:percent];
+    return self.startingValue + (updateVal * (self.destinationValue - self.startingValue));
 }
 
 @end
