@@ -5,6 +5,8 @@ typedef enum {
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
     UILabelCountingMethodEaseOut,
+    UILabelCountingMethodEaseInBounce,
+    UILabelCountingMethodEaseOutBounce,
     UILabelCountingMethodLinear
 } UILabelCountingMethod;
 
