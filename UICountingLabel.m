@@ -206,7 +206,7 @@
     else
     {
         // check if counting with ints - cast to int
-        if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+        if([self.format rangeOfString:@"%(.*)(d|i)" options:NSRegularExpressionSearch].location != NSNotFound)
         {
             self.text = [NSString stringWithFormat:self.format,(int)value];
         }
