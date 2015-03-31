@@ -208,11 +208,19 @@
         // check if counting with ints - cast to int
         if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
         {
-            self.text = [NSString stringWithFormat:self.format,(int)value];
+            if (self.shouldBeLocalized) {
+                self.text = [NSString localizedStringWithFormat:self.format,(int)value];
+            } else {
+                self.text = [NSString stringWithFormat:self.format,(int)value];
+            }
         }
         else
         {
-            self.text = [NSString stringWithFormat:self.format,value];
+            if (self.shouldBeLocalized) {
+                self.text = [NSString localizedStringWithFormat:self.format,value];
+            } else {
+                self.text = [NSString stringWithFormat:self.format,value];
+            }
         }
     }
 }
