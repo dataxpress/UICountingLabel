@@ -40,7 +40,7 @@
     [self.view addSubview:scoreLabel];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = kCFNumberFormatterDecimalStyle;
-    scoreLabel.formatBlock = ^NSString* (float value)
+    scoreLabel.formatBlock = ^NSString* (CGFloat value)
     {
         NSString* formatted = [formatter stringFromNumber:@((int)value)];
         return [NSString stringWithFormat:@"Score: %@",formatted];
@@ -52,7 +52,7 @@
     NSInteger toValue = 100;
     UICountingLabel* attributedLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 130, 200, 40)];
     [self.view addSubview:attributedLabel];
-    attributedLabel.attributedFormatBlock = ^NSAttributedString* (float value)
+    attributedLabel.attributedFormatBlock = ^NSAttributedString* (CGFloat value)
     {
         NSDictionary* normal = @{ NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 20] };
         NSDictionary* highlight = @{ NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue" size: 20] };
