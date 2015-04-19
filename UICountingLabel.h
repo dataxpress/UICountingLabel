@@ -1,12 +1,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, UILabelCountingMethod) {
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
     UILabelCountingMethodEaseOut,
     UILabelCountingMethodLinear
-} UILabelCountingMethod;
+};
 
 typedef NSString* (^UICountingLabelFormatBlock)(float value);
 typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(float value);
