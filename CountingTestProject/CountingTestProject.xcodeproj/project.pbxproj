@@ -38,8 +38,8 @@
 		4C5DC2BB16C576E30043204D /* CTPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPViewController.h; sourceTree = "<group>"; };
 		4C5DC2BC16C576E30043204D /* CTPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPViewController.m; sourceTree = "<group>"; };
 		4C5DC2BF16C576E30043204D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CTPViewController.xib; sourceTree = "<group>"; };
-		4C5DC2C916C577720043204D /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../UICountingLabel.h; sourceTree = "<group>"; };
-		4C5DC2CA16C577720043204D /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = ../UICountingLabel.m; sourceTree = "<group>"; };
+		4C5DC2C916C577720043204D /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../../UICountingLabel.h; sourceTree = "<group>"; };
+		4C5DC2CA16C577720043204D /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = ../../UICountingLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
