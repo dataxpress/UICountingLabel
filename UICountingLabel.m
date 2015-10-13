@@ -6,37 +6,29 @@
 
 #pragma mark - UILabelCounter
 
-// This whole class & subclasses are private to UICountingLabel, which is why they are declared here in the .m file
+#ifndef kUILabelCounterRate
+#define kUILabelCounterRate 3.0
+#endif
 
-@interface UILabelCounter : NSObject
+@protocol UILabelCounter<NSObject>
 
 -(CGFloat)update:(CGFloat)t;
 
-@property CGFloat rate;
+@end
+
+@interface UILabelCounterLinear : NSObject<UILabelCounter>
 
 @end
 
-@interface UILabelCounterLinear : UILabelCounter
+@interface UILabelCounterEaseIn : NSObject<UILabelCounter>
 
 @end
 
-@interface UILabelCounterEaseIn : UILabelCounter
+@interface UILabelCounterEaseOut : NSObject<UILabelCounter>
 
 @end
 
-@interface UILabelCounterEaseOut : UILabelCounter
-
-@end
-
-@interface UILabelCounterEaseInOut : UILabelCounter
-
-@end
-
-@implementation  UILabelCounter
-
--(CGFloat)update:(CGFloat)t{
-    return 0;
-}
+@interface UILabelCounterEaseInOut : NSObject<UILabelCounter>
 
 @end
 
@@ -53,7 +45,7 @@
 
 -(CGFloat)update:(CGFloat)t
 {
-    return powf(t, self.rate);
+    return powf(t, kUILabelCounterRate);
 }
 
 @end
@@ -61,7 +53,7 @@
 @implementation UILabelCounterEaseOut
 
 -(CGFloat)update:(CGFloat)t{
-    return 1.0-powf((1.0-t), self.rate);
+    return 1.0-powf((1.0-t), kUILabelCounterRate);
 }
 
 @end
@@ -71,14 +63,14 @@
 -(CGFloat) update: (CGFloat) t
 {
 	int sign =1;
-	int r = (int) self.rate;
+	int r = (int) kUILabelCounterRate;
 	if (r % 2 == 0)
 		sign = -1;
 	t *= 2;
 	if (t < 1)
-		return 0.5f * powf (t, self.rate);
+		return 0.5f * powf(t, kUILabelCounterRate);
 	else
-		return sign*0.5f * (powf (t-2, self.rate) + sign*2);
+		return sign * 0.5f * (powf(t-2, kUILabelCounterRate) + sign * 2);
 }
 
 @end
@@ -95,7 +87,7 @@
 @property CGFloat easingRate;
 
 @property (nonatomic, weak) NSTimer *timer;
-@property (nonatomic, strong) UILabelCounter *counter;
+@property (nonatomic, strong) id<UILabelCounter> counter;
 
 @end
 
@@ -149,8 +141,6 @@
             self.counter = [[UILabelCounterEaseInOut alloc] init];
             break;
     }
-
-    self.counter.rate = 3.0f;
 
     NSTimer *timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
