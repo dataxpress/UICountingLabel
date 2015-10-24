@@ -1,4 +1,4 @@
-# UICountingLabel ####
+# UICountingLabel [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ####
 
 Adds animated counting support to `UILabel`. 
 
@@ -11,6 +11,16 @@ Add this to your Podfile:
 And then run:
 
 `$ pod install`
+
+## Carthage ######
+UICountingLabel is available on Carthage.
+Add this to your Cartfile:
+
+`github "dataxpress/UICountingLabel" "master"`
+
+And then run:
+
+`$ carthage update`
 
 ## Setup ######
 Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel`:
