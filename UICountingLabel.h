@@ -38,6 +38,6 @@ typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(CGFloat valu
 // For use by subclasses.
 @interface UICountingLabel (Protected)
 
-- (void)setTextValue:(float)value;
+- (void)setTextValue:(CGFloat)value;
 
 @end
