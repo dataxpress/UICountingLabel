@@ -17,7 +17,6 @@ Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel
 
     UICountingLabel* myLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 10, 100, 40)];
     [self.view addSubview:myLabel];
-    [myLabel release];
 
 You can also add it to your XIB file, just make sure you set the class type to `UICountingLabel` instead of `UILabel` and be sure to `#import "UICountingLabel.h"` in the header file.
 
