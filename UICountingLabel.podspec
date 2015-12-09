@@ -6,7 +6,8 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Tim Gostony" => "dataxpress@gmail.com" }
   s.source       = { :git => "https://github.com/dataxpress/UICountingLabel.git", :tag => s.version.to_s }
-  s.platform     = :ios, '5.0'
+  s.ios.deployment_target = '5.0'
+  s.tvos.deployment_target = '9.0'
   s.source_files = 'UICountingLabel.{h,m}'
   s.exclude_files = 'Classes/Exclude'
   s.requires_arc = true
