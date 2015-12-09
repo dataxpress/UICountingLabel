@@ -25,11 +25,26 @@ You can also add it to your XIB file, just make sure you set the class type to `
 Set the format of your label.  This will be filled with a single int or float (depending on how you format it) when it updates:
 
     myLabel.format = @"%d";
+
+Alternatively, you can provide a `UICountingLabelFormatBlock`, which permits greater control over how the text is formatted:
+
+    myLabel.fomatBlock = ^(NSString *)(CGFloat progress) {    
+        NSInteger years = value / 12;
+        NSInteger months = (NSInteger)value % 12;
+        if (years == 0) {
+            return [NSString stringWithFormat: @"%ld months", (long)months];
+        }
+        else {
+            return [NSString stringWithFormat: @"%ld years, %ld months", (long)years, (long)months];
+        }
+    };
     
+There is also a `UICountingLabelAttributedFormatBlock` to use an attributed string. If the `formatBlock` is specified, it takes precedence over the `format`.
+
 Optionally, set the mode.  The default is `UILabelCountingMethodEaseInOut`, which will start slow, speed up, and then slow down as it reaches the end.  Other options are described below in the Methods section.
 
     myLabel.method = UILabelCountingMethodLinear;
-
+    
 When you want the label to start counting, just call:
 
     [myLabel countFrom:50 to:100];
@@ -56,6 +71,12 @@ Behind the scenes, these convinient methods use one base method, which has the f
 You can get current value of your label using `-currentValue` method (works correctly in the process of animation too):
 
     CGFloat currentValue = [myLabel currentValue];
+    
+Optionally, you can specify a `completionBlock` to perform an acton when the label has finished counting:
+
+    myLabel.completionBlock = ^{
+        NSLog(@"finished counting");
+    };
 
 ## Formats #####
 
