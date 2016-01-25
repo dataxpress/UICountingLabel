@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33EFDA461C56C4C40084A36A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EFDA451C56C4C40084A36A /* QuartzCore.framework */; };
 		4C5DC2A416C576E30043204D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A316C576E30043204D /* UIKit.framework */; };
 		4C5DC2A616C576E30043204D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A516C576E30043204D /* Foundation.framework */; };
 		4C5DC2A816C576E30043204D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A716C576E30043204D /* CoreGraphics.framework */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33EFDA451C56C4C40084A36A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4C5DC2A016C576E30043204D /* CountingTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountingTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5DC2A316C576E30043204D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C5DC2A516C576E30043204D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EFDA461C56C4C40084A36A /* QuartzCore.framework in Frameworks */,
 				4C5DC2A416C576E30043204D /* UIKit.framework in Frameworks */,
 				4C5DC2A616C576E30043204D /* Foundation.framework in Frameworks */,
 				4C5DC2A816C576E30043204D /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +79,7 @@
 		4C5DC2A216C576E30043204D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33EFDA451C56C4C40084A36A /* QuartzCore.framework */,
 				4C5DC2A316C576E30043204D /* UIKit.framework */,
 				4C5DC2A516C576E30043204D /* Foundation.framework */,
 				4C5DC2A716C576E30043204D /* CoreGraphics.framework */,
@@ -139,7 +143,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CTP;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Tim Gostony";
 			};
 			buildConfigurationList = 4C5DC29B16C576E30043204D /* Build configuration list for PBXProject "CountingTestProject" */;
@@ -222,6 +226,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -271,6 +276,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CountingTestProject/CountingTestProject-Prefix.pch";
 				INFOPLIST_FILE = "CountingTestProject/CountingTestProject-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timgostony.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -283,6 +289,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CountingTestProject/CountingTestProject-Prefix.pch";
 				INFOPLIST_FILE = "CountingTestProject/CountingTestProject-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.timgostony.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
