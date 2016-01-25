@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/dataxpress/UICountingLabel"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Tim Gostony" => "dataxpress@gmail.com" }
-  s.source       = { :git => "https://github.com/dataxpress/UICountingLabel.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/square/UICountingLabel.git", :tag => s.version.to_s }
   s.ios.deployment_target = '5.0'
   s.tvos.deployment_target = '9.0'
   s.source_files = 'UICountingLabel.{h,m}'
