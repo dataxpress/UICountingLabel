@@ -1,3 +1,5 @@
+#import <QuartzCore/QuartzCore.h>
+
 #import "UICountingLabel.h"
 
 #if !__has_feature(objc_arc)
@@ -86,7 +88,7 @@
 @property NSTimeInterval totalTime;
 @property CGFloat easingRate;
 
-@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, strong) CADisplayLink *timer;
 @property (nonatomic, strong) id<UILabelCounter> counter;
 
 @end
@@ -142,9 +144,10 @@
             break;
     }
 
-    NSTimer *timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
+    CADisplayLink *timer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateValue:)];
+    timer.frameInterval = 2;
+    [timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:UITrackingRunLoopMode];
     self.timer = timer;
 }
 
