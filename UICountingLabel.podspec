@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "UICountingLabel"
-  s.version      = "1.3.0"
+  s.version      = "1.4.0"
   s.summary      = "Adds animated counting support to UILabel."
   s.homepage     = "https://github.com/dataxpress/UICountingLabel"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
