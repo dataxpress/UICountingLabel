@@ -1,6 +1,6 @@
 # UICountingLabel ####
 
-Adds animated counting support to `UILabel`. 
+Adds animated counting support to `UILabel`.
 
 ## CocoaPods ######
 UICountingLabel is available on CocoaPods.
@@ -28,7 +28,7 @@ Set the format of your label.  This will be filled with a single int or float (d
 
 Alternatively, you can provide a `UICountingLabelFormatBlock`, which permits greater control over how the text is formatted:
 
-    myLabel.fomatBlock = ^(NSString *)(CGFloat progress) {    
+    myLabel.formatBlock = ^(NSString *)(CGFloat progress) {    
         NSInteger years = value / 12;
         NSInteger months = (NSInteger)value % 12;
         if (years == 0) {
@@ -38,13 +38,13 @@ Alternatively, you can provide a `UICountingLabelFormatBlock`, which permits gre
             return [NSString stringWithFormat: @"%ld years, %ld months", (long)years, (long)months];
         }
     };
-    
+
 There is also a `UICountingLabelAttributedFormatBlock` to use an attributed string. If the `formatBlock` is specified, it takes precedence over the `format`.
 
 Optionally, set the mode.  The default is `UILabelCountingMethodEaseInOut`, which will start slow, speed up, and then slow down as it reaches the end.  Other options are described below in the Methods section.
 
     myLabel.method = UILabelCountingMethodLinear;
-    
+
 When you want the label to start counting, just call:
 
     [myLabel countFrom:50 to:100];
@@ -61,17 +61,17 @@ You can use common convinient methods for counting, such as:
 
     [myLabel countFromCurrentValueTo:100];
     [myLabel countFromZeroTo:100];
-    
+
 Behind the scenes, these convinient methods use one base method, which has the following full signature:
-    
-    [myLabel     countFrom:(float)startValue 
-                        to:(float)endValue 
+
+    [myLabel     countFrom:(float)startValue
+                        to:(float)endValue
               withDuration:(NSTimeInterval)duration];
 
 You can get current value of your label using `-currentValue` method (works correctly in the process of animation too):
 
     CGFloat currentValue = [myLabel currentValue];
-    
+
 Optionally, you can specify a `completionBlock` to perform an acton when the label has finished counting:
 
     myLabel.completionBlock = ^{
