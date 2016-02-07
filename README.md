@@ -28,7 +28,7 @@ Set the format of your label.  This will be filled with a single int or float (d
 
 Alternatively, you can provide a `UICountingLabelFormatBlock`, which permits greater control over how the text is formatted:
 
-    myLabel.formatBlock = ^NSString* (CGFloat progress) {    
+    myLabel.formatBlock = ^NSString* (CGFloat value) {    
         NSInteger years = value / 12;
         NSInteger months = (NSInteger)value % 12;
         if (years == 0) {
