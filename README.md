@@ -12,6 +12,8 @@ And then run:
 
 `$ pod install`
 
+![alt tag](https://raw.github.com/jesseclay/UICountingLabel/demo.gif)
+
 ## Setup ######
 Simply initialize a `UICountingLabel` the same way you set up a regular `UILabel`:
 
