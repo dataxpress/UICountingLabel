@@ -2,7 +2,7 @@
 
 Adds animated counting support to `UILabel`.
 
-![alt tag](https://github.com/jesseclay/UICountingLabel/blob/master/demo.gif)
+![alt text](https://github.com/dataxpress/UICountingLabel/blob/master/demo.gif "demo")
 
 ## CocoaPods ######
 UICountingLabel is available on CocoaPods.
