@@ -64,15 +64,11 @@
 
 -(CGFloat) update: (CGFloat) t
 {
-	int sign =1;
-	int r = (int) kUILabelCounterRate;
-	if (r % 2 == 0)
-		sign = -1;
-	t *= 2;
-	if (t < 1)
-		return 0.5f * powf(t, kUILabelCounterRate);
-	else
-		return sign * 0.5f * (powf(t-2, kUILabelCounterRate) + sign * 2);
+    t *= 2;
+    if (t < 1)
+        return 0.5f * powf (t, kUILabelCounterRate);
+    else
+        return 0.5f * (2.0f - powf(2.0 - t, kUILabelCounterRate));
 }
 
 @end
