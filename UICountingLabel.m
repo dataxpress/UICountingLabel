@@ -34,6 +34,14 @@
 
 @end
 
+@interface UILabelCounterEaseInBounce : NSObject<UILabelCounter>
+
+@end
+
+@interface UILabelCounterEaseOutBounce : NSObject<UILabelCounter>
+
+@end
+
 @implementation UILabelCounterLinear
 
 -(CGFloat)update:(CGFloat)t
@@ -69,6 +77,50 @@
         return 0.5f * powf (t, kUILabelCounterRate);
     else
         return 0.5f * (2.0f - powf(2.0 - t, kUILabelCounterRate));
+}
+
+@end
+
+@implementation UILabelCounterEaseInBounce
+
+-(CGFloat) update: (CGFloat) t {
+    
+    if (t < 4.0 / 11.0) {
+        return 1.0 - (powf(11.0 / 4.0, 2) * powf(t, 2)) - t;
+    }
+    
+    if (t < 8.0 / 11.0) {
+        return 1.0 - (3.0 / 4.0 + powf(11.0 / 4.0, 2) * powf(t - 6.0 / 11.0, 2)) - t;
+    }
+    
+    if (t < 10.0 / 11.0) {
+        return 1.0 - (15.0 /16.0 + powf(11.0 / 4.0, 2) * powf(t - 9.0 / 11.0, 2)) - t;
+    }
+    
+    return 1.0 - (63.0 / 64.0 + powf(11.0 / 4.0, 2) * powf(t - 21.0 / 22.0, 2)) - t;
+    
+}
+
+@end
+
+@implementation UILabelCounterEaseOutBounce
+
+-(CGFloat) update: (CGFloat) t {
+    
+    if (t < 4.0 / 11.0) {
+        return powf(11.0 / 4.0, 2) * powf(t, 2);
+    }
+    
+    if (t < 8.0 / 11.0) {
+        return 3.0 / 4.0 + powf(11.0 / 4.0, 2) * powf(t - 6.0 / 11.0, 2);
+    }
+    
+    if (t < 10.0 / 11.0) {
+        return 15.0 /16.0 + powf(11.0 / 4.0, 2) * powf(t - 9.0 / 11.0, 2);
+    }
+    
+    return 63.0 / 64.0 + powf(11.0 / 4.0, 2) * powf(t - 21.0 / 22.0, 2);
+    
 }
 
 @end
@@ -137,6 +189,12 @@
             break;
         case UILabelCountingMethodEaseInOut:
             self.counter = [[UILabelCounterEaseInOut alloc] init];
+            break;
+        case UILabelCountingMethodEaseOutBounce:
+            self.counter = [[UILabelCounterEaseOutBounce alloc] init];
+            break;
+        case UILabelCountingMethodEaseInBounce:
+            self.counter = [[UILabelCounterEaseInBounce alloc] init];
             break;
     }
 
