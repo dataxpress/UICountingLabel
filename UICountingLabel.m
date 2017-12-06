@@ -109,6 +109,9 @@
     [self.timer invalidate];
     self.timer = nil;
     
+    if(self.format == nil) {
+        self.format = @"%f";
+    }
     if (duration == 0.0) {
         // No animation
         [self setTextValue:endValue];
@@ -120,9 +123,6 @@
     self.progress = 0;
     self.totalTime = duration;
     self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
-
-    if(self.format == nil)
-        self.format = @"%f";
 
     switch(self.method)
     {
