@@ -5,7 +5,9 @@ typedef NS_ENUM(NSInteger, UILabelCountingMethod) {
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
     UILabelCountingMethodEaseOut,
-    UILabelCountingMethodLinear
+    UILabelCountingMethodLinear,
+    UILabelCountingMethodEaseInBounce,
+    UILabelCountingMethodEaseOutBounce
 };
 
 typedef NSString* (^UICountingLabelFormatBlock)(CGFloat value);
