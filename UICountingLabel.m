@@ -253,7 +253,8 @@
     else
     {
         // check if counting with ints - cast to int
-        if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+        // regex based on IEEE printf specification: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
+        if([self.format rangeOfString:@"%[^fega]*[diouxc]" options:NSRegularExpressionSearch|NSCaseInsensitiveSearch].location != NSNotFound)
         {
             self.text = [NSString stringWithFormat:self.format,(int)value];
         }
