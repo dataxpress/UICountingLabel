@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UICountingLabel.h"
+#import <CountingTestProject-Swift.h>
 
 @interface CTPViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UICountingLabel *label;

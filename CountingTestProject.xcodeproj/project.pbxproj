@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33EFDA461C56C4C40084A36A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EFDA451C56C4C40084A36A /* QuartzCore.framework */; };
+		372850A5222F942B00C73602 /* UICountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372850A4222F942B00C73602 /* UICountingLabel.swift */; };
 		4C5DC2A416C576E30043204D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A316C576E30043204D /* UIKit.framework */; };
 		4C5DC2A616C576E30043204D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A516C576E30043204D /* Foundation.framework */; };
 		4C5DC2A816C576E30043204D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DC2A716C576E30043204D /* CoreGraphics.framework */; };
@@ -19,11 +20,12 @@
 		4C5DC2BA16C576E30043204D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DC2B916C576E30043204D /* Default-568h@2x.png */; };
 		4C5DC2BD16C576E30043204D /* CTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DC2BC16C576E30043204D /* CTPViewController.m */; };
 		4C5DC2C016C576E30043204D /* CTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DC2BE16C576E30043204D /* CTPViewController.xib */; };
-		4C5DC2CB16C577720043204D /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DC2CA16C577720043204D /* UICountingLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33EFDA451C56C4C40084A36A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		372850A3222F942A00C73602 /* CountingTestProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CountingTestProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		372850A4222F942B00C73602 /* UICountingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICountingLabel.swift; path = ../UICountingLabel.swift; sourceTree = "<group>"; };
 		4C5DC2A016C576E30043204D /* CountingTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountingTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5DC2A316C576E30043204D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C5DC2A516C576E30043204D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,8 +42,6 @@
 		4C5DC2BB16C576E30043204D /* CTPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPViewController.h; sourceTree = "<group>"; };
 		4C5DC2BC16C576E30043204D /* CTPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPViewController.m; sourceTree = "<group>"; };
 		4C5DC2BF16C576E30043204D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CTPViewController.xib; sourceTree = "<group>"; };
-		4C5DC2C916C577720043204D /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../UICountingLabel.h; sourceTree = "<group>"; };
-		4C5DC2CA16C577720043204D /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = ../UICountingLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +95,9 @@
 				4C5DC2BB16C576E30043204D /* CTPViewController.h */,
 				4C5DC2BC16C576E30043204D /* CTPViewController.m */,
 				4C5DC2BE16C576E30043204D /* CTPViewController.xib */,
-				4C5DC2C916C577720043204D /* UICountingLabel.h */,
-				4C5DC2CA16C577720043204D /* UICountingLabel.m */,
+				372850A4222F942B00C73602 /* UICountingLabel.swift */,
 				4C5DC2AA16C576E30043204D /* Supporting Files */,
+				372850A3222F942A00C73602 /* CountingTestProject-Bridging-Header.h */,
 			);
 			path = CountingTestProject;
 			sourceTree = "<group>";
@@ -151,6 +151,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 4C5DC29716C576E30043204D;
@@ -184,9 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5DC2B016C576E30043204D /* main.m in Sources */,
+				372850A5222F942B00C73602 /* UICountingLabel.swift in Sources */,
 				4C5DC2B416C576E30043204D /* CTPAppDelegate.m in Sources */,
 				4C5DC2BD16C576E30043204D /* CTPViewController.m in Sources */,
-				4C5DC2CB16C577720043204D /* UICountingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,13 +307,18 @@
 		4C5DC2C416C576E30043204D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CountingTestProject/CountingTestProject-Prefix.pch";
 				INFOPLIST_FILE = "CountingTestProject/CountingTestProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.timgostony.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CountingTestProject/CountingTestProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -320,13 +326,17 @@
 		4C5DC2C516C576E30043204D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CountingTestProject/CountingTestProject-Prefix.pch";
 				INFOPLIST_FILE = "CountingTestProject/CountingTestProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.timgostony.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CountingTestProject/CountingTestProject-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
