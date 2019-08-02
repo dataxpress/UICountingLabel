@@ -256,11 +256,19 @@
         // regex based on IEEE printf specification: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
         if([self.format rangeOfString:@"%[^fega]*[diouxc]" options:NSRegularExpressionSearch|NSCaseInsensitiveSearch].location != NSNotFound)
         {
-            self.text = [NSString stringWithFormat:self.format,(int)value];
+            if (self.shouldBeLocalized) {
+                self.text = [NSString localizedStringWithFormat:self.format,(int)value];
+            } else {
+                self.text = [NSString stringWithFormat:self.format,(int)value];
+            }
         }
         else
         {
-            self.text = [NSString stringWithFormat:self.format,value];
+            if (self.shouldBeLocalized) {
+                self.text = [NSString localizedStringWithFormat:self.format,value];
+            } else {
+                self.text = [NSString stringWithFormat:self.format,value];
+            }
         }
     }
 }
