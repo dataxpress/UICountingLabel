@@ -19,6 +19,10 @@ DerivedData
 *.hmap
 *.ipa
 
+*.xcworkspace
+!default.xcworkspace
+.idea/
+
 # Bundler
 .bundle
 
