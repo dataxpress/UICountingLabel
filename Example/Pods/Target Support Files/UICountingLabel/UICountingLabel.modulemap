@@ -1,0 +1,6 @@
+framework module UICountingLabel {
+  umbrella header "UICountingLabel-umbrella.h"
+
+  export *
+  module * { export * }
+}
