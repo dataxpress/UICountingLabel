@@ -1,12 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-//! Project version number for UICountingLabel.
-FOUNDATION_EXPORT double UICountingLabelVersionNumber;
-
- //! Project version string for UICountingLabel.
-FOUNDATION_EXPORT const unsigned char UICountingLabelVersionString[];
-
 typedef NS_ENUM(NSInteger, UILabelCountingMethod) {
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
