@@ -21,14 +21,14 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // make one that counts up
-    UICountingLabel* myLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 10, 200, 40)];
+    UICountingLabel* myLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 30, 200, 40)];
     myLabel.method = UILabelCountingMethodLinear;
     myLabel.format = @"%d";
     [self.view addSubview:myLabel];
     [myLabel countFrom:1 to:10 withDuration:3.0];
     
     // make one that counts up from 5% to 10%, using ease in out (the default)
-    UICountingLabel* countPercentageLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 50, 200, 40)];
+    UICountingLabel* countPercentageLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 70, 200, 40)];
     [self.view addSubview:countPercentageLabel];
     countPercentageLabel.format = @"%.1f%%";
     [countPercentageLabel countFrom:5 to:10];
@@ -36,7 +36,7 @@
     
     
     // count up using a string that uses a number formatter
-    UICountingLabel* scoreLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 90, 200, 40)];
+    UICountingLabel* scoreLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 110, 200, 40)];
     [self.view addSubview:scoreLabel];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = kCFNumberFormatterDecimalStyle;
@@ -50,7 +50,7 @@
     
     // count up with attributed string
     NSInteger toValue = 100;
-    UICountingLabel* attributedLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 130, 200, 40)];
+    UICountingLabel* attributedLabel = [[UICountingLabel alloc] initWithFrame:CGRectMake(10, 150, 200, 40)];
     [self.view addSubview:attributedLabel];
     attributedLabel.attributedFormatBlock = ^NSAttributedString* (CGFloat value)
     {

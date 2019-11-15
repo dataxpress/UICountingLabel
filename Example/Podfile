@@ -1,0 +1,7 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'CountingTestProject' do
+  pod 'UICountingLabel', :path => '../'
+end

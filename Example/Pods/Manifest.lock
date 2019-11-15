@@ -1,0 +1,16 @@
+PODS:
+  - UICountingLabel (1.4.1)
+
+DEPENDENCIES:
+  - UICountingLabel (from `../`)
+
+EXTERNAL SOURCES:
+  UICountingLabel:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  UICountingLabel: cefc8fb9e2934d968f975e5fcc7b4d01f5403a9b
+
+PODFILE CHECKSUM: ad599c616cd89d725d86940c1c215cb350031e6e
+
+COCOAPODS: 1.8.4
