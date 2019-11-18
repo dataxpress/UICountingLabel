@@ -174,7 +174,7 @@
     self.easingRate = 3.0f;
     self.progress = 0;
     self.totalTime = duration;
-    self.lastUpdate = [NSDate timeIntervalSinceReferenceDate];
+    self.lastUpdate = CACurrentMediaTime();
 
     switch(self.method)
     {
@@ -224,7 +224,7 @@
 - (void)updateValue:(NSTimer *)timer {
     
     // update progress
-    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval now = CACurrentMediaTime();
     self.progress += now - self.lastUpdate;
     self.lastUpdate = now;
     
