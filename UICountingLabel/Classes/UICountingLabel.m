@@ -273,9 +273,10 @@
 
 - (void)runCompletionBlock {
     
-    if (self.completionBlock) {
-        self.completionBlock();
+    void (^block)(void) = self.completionBlock;
+    if (block) {
         self.completionBlock = nil;
+        block();
     }
 }
 
