@@ -1,7 +1,7 @@
 @import Foundation;
 @import CoreGraphics;
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_TV
 @import UIKit;
 
 typedef NS_ENUM(NSInteger, UILabelCountingMethod) {

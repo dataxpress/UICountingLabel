@@ -2,7 +2,7 @@
 
 #import "include/UICountingLabel.h"
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_TV
 @import UIKit;
 
 #if !__has_feature(objc_arc)
