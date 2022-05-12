@@ -9,5 +9,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.tvos.deployment_target = '9.0'
   s.source_files = 'UICountingLabel/Classes/**/*'
+  s.private_header_files = 'UICountingLabel/Classes/include/**/*.h'
   s.requires_arc = true
 end
