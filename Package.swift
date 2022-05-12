@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "UICountingLabel",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v8),
+        .tvOS(.v9)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
