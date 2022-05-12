@@ -1,6 +1,9 @@
 #import <QuartzCore/QuartzCore.h>
 
-#import "UICountingLabel.h"
+#import "include/UICountingLabel.h"
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+@import UIKit;
 
 #if !__has_feature(objc_arc)
 #error UICountingLabel is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
@@ -292,3 +295,5 @@
 }
 
 @end
+
+#endif //TARGET_OS_IOS

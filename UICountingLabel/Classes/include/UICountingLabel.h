@@ -1,5 +1,8 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import CoreGraphics;
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+@import UIKit;
 
 typedef NS_ENUM(NSInteger, UILabelCountingMethod) {
     UILabelCountingMethodEaseInOut,
@@ -36,3 +39,4 @@ typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(CGFloat valu
 
 @end
 
+#endif //TARGET_OS_IOS
