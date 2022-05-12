@@ -26,7 +26,7 @@ let package = Package(
             name: "UICountingLabel",
             dependencies: [],
             path: "UICountingLabel/Classes",
-            publicHeadersPath: "**",
+            publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("**")
             ]

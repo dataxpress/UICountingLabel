@@ -1,6 +1,6 @@
 #import <QuartzCore/QuartzCore.h>
 
-#import "UICountingLabel.h"
+#import "include/UICountingLabel.h"
 
 #if TARGET_OS_IOS
 @import UIKit;
