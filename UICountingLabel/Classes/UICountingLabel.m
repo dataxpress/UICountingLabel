@@ -2,6 +2,9 @@
 
 #import "UICountingLabel.h"
 
+#if TARGET_OS_IOS
+@import UIKit;
+
 #if !__has_feature(objc_arc)
 #error UICountingLabel is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
 #endif
@@ -292,3 +295,5 @@
 }
 
 @end
+
+#endif //TARGET_OS_IOS
